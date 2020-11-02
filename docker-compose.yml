@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  notes:
+    build:
+      context: ./notes
+      dockerfile: .docker/Dockerfile.dev
+    image: "clement/docusaurus:2.0.0-alpha.66"
+    command: [ "npm", "run", "start:search"]
+    ports:
+      - "0.0.0.0:3000:3000"
+    volumes:
+      - ./notes/src:/app/src
+    networks:
+      - docs-net
+
+  meilisearch:
+    image: "getmeili/meilisearch:v0.16.0rc0"
+    ports:
+        - "0.0.0.0:7700:7700"
+    volumes:
+        - ./data-meilisearch:/data.ms
+    networks:
+        - docs-net
+networks:
+  docs-net:
