@@ -1,4 +1,4 @@
-# Docusaurus x MeiliSearch
+# 🔎 Docusaurus x MeiliSearch
 
 ## Get Started 
 
